@@ -1,17 +1,22 @@
-# Imagen base de Node
+# Imagen oficial de Node.js
 FROM node:18
 
-# Crear carpeta de trabajo
+# Crear directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos del backend
+# Copiar archivos de dependencias (con package-lock.json)
+COPY package.json ./
+
+# COPY package-lock.json ./
+
+# Instalar dependencias en Linux, compilando bcrypt desde cero
+RUN npm install --build-from-source
+
+# Copiar el resto del backend
 COPY . .
 
-# Instalar dependencias
-RUN npm install
-
-# Exponer el puerto (ajusta si tu backend usa otro)
+# Exponer el puerto de tu servidor
 EXPOSE 3001
 
-# Comando para iniciar el backend
+# Comando para arrancar
 CMD ["node", "server.js"]

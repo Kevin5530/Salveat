@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./Backend
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./Backend:/app
+    environment:
+      - DB_HOST=host.docker.internal  # <-- se conecta al MySQL 
+      - DB_USER=root
+      - DB_PASSWORD=Piz@rro5530
+      - DB_NAME=gestionrestaurantes
+      - DB_PORT=3306
+    networks:
+      - app-network
+
+  frontend:
+    build: ./Frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./Frontend:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:

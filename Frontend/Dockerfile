@@ -10,11 +10,11 @@ COPY . .
 # Instalar dependencias y construir la app
 RUN npm install && npm run build
 
-# Instalar servidor estático para servir React
+# Instalar servidor estático
 RUN npm install -g serve
 
-# Exponer puerto
+# Exponer el puerto
 EXPOSE 3000
 
-# Servir la app construida
+# Comando para servir la app
 CMD ["serve", "-s", "build", "-l", "3000"]
