@@ -8,10 +8,10 @@ services:
     volumes:
       - ./Backend:/app
     environment:
-      - DB_HOST=host.docker.internal  # <-- se conecta al MySQL 
+      - DB_HOST=host.docker.internal  # se conecta al MySQL 
       - DB_USER=root
-      - DB_PASSWORD=Piz@rro5530
-      - DB_NAME=gestionrestaurantes
+      - DB_PASSWORD=
+      - DB_NAME=
       - DB_PORT=3306
     networks:
       - app-network
